@@ -1,4 +1,4 @@
-# All-in-One Media Processing Library
+# Media Processing Library
 
 Python-based open-source library for processing **Image, Video, Audio, and Text**.  
 This project provides a comprehensive toolkit for multimedia data preprocessing, designed for AI/ML pipelines and content creation.
