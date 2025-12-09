@@ -2,6 +2,7 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
 from PIL import ImageTk
+import platform
 
 from src.load_image import load_image
 from src.save_image import save_image
@@ -91,11 +92,17 @@ class ImageToolApp:
 
     # 파일 열기, 저장
     def open_image(self):
+        if platform.system() == "Darwin":
+            jpg_exts = "*.jpg", "*.jpeg"
+            all_files = "*"
+        else:
+            jpg_exts = "*.png;*.jpg;*.jpeg;*.bmp;*.gif"
+            all_files = "*.*"
         path = filedialog.askopenfilename(
             title="이미지 선택",
             filetypes=[
-                ("Image files", "*.png;*.jpg;*.jpeg;*.bmp;*.gif"),
-                ("All files", "*.*"),
+                ("Image files", jpg_exts),
+                ("All files", all_files),
             ],
         )
         if not path:
@@ -117,13 +124,20 @@ class ImageToolApp:
             messagebox.showwarning("주의", "먼저 이미지를 여세요.")
             return
 
+        if platform.system() == "Darwin":
+            jpg_exts = "*.jpg", "*.jpeg"
+            all_files = "*"
+        else:
+            jpg_exts = "*.jpg;*.jpeg"
+            all_files = "*.*"
+
         path = filedialog.asksaveasfilename(
             title="이미지 저장",
             defaultextension=".png",
             filetypes=[
                 ("PNG", "*.png"),
-                ("JPEG", "*.jpg;*.jpeg"),
-                ("All files", "*.*"),
+                ("JPEG", jpg_exts),
+                ("All files", all_files),
             ],
         )
         if not path:
