@@ -1,6 +1,6 @@
 import os
 import numpy as np
-import file, process, convert
+from src import file, process, convert
 
 def main():
     # 경로 설정
@@ -9,7 +9,7 @@ def main():
     split_dir = os.path.join(output_dir, "split_files")
     
     # 처리할 비디오 파일명 (audio/data/input 폴더 안에 있어야 함)
-    target_video = "video4.mp4" 
+    target_video = "video.mp4" 
 
     # 1. 변환 (MP4 -> WAV)
     audio_path = convert.convert(base_dir, target_video)
